@@ -2,6 +2,7 @@
 const shedButton = document.getElementById('shed-button');
 const treeButton = document.getElementById('tree-button');
 const boulderButton = document.getElementById('boulder-button');
+const resetScoreButton = document.getElementById('reset-button');
 
 const shedContainer = document.getElementById('shed-container');
 const treeContainer = document.getElementById('tree-container');
@@ -33,6 +34,12 @@ boulderButton.addEventListener('click', () => {
     const hidingSpot = Math.floor(Math.random() * 3);
     const answer = hidingPlaces[hidingSpot];
     handleGuess(answer, 'boulder');
+});
+
+resetScoreButton.addEventListener('click', () => {
+    totalEl.textContent = 0;
+    winsEl.textContent = 0;
+    lossesEl.textContent = 0;
 });
 
 function handleGuess(correctSpot, userGuess) {
