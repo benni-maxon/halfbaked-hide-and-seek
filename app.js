@@ -37,9 +37,10 @@ boulderButton.addEventListener('click', () => {
 });
 
 resetScoreButton.addEventListener('click', () => {
-    totalEl.textContent = 0;
-    winsEl.textContent = 0;
-    lossesEl.textContent = 0;
+    totalGuesses = 0;
+    correctGuesses = 0;
+    resetStyles();
+    guessesDisplay();
 });
 
 function handleGuess(correctSpot, userGuess) {
@@ -56,13 +57,17 @@ function handleGuess(correctSpot, userGuess) {
         correctGuesses++;
     }
     // update the DOM to show this change to the user (including the losses, not tracked directly in state)
-    totalEl.textContent = totalGuesses;
-    winsEl.textContent = correctGuesses;
-    lossesEl.textContent = totalGuesses - correctGuesses;
+    guessesDisplay();
 }
 
 function resetStyles() {
     shedContainer.classList.remove('face');
     treeContainer.classList.remove('face');
     boulderContainer.classList.remove('face');
+}
+
+function guessesDisplay() {
+    totalEl.textContent = totalGuesses;
+    winsEl.textContent = correctGuesses;
+    lossesEl.textContent = totalGuesses - correctGuesses;
 }
